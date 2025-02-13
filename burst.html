@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ZingSoft Demo</title>
+  <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .chart--container {
+      min-height: 150px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .zc-ref {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- CHART CONTAINER -->
+  <div id="myChart" class="chart--container">
+    <a class="zc-ref" href="https://www.zingchart.com/">Powered by ZingChart</a>
+  </div>
+  <script>
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"]; // window:load event for Javascript to run after HTML
+    // because this Javascript is injected into the document head
+    window.addEventListener('load', () => {
+      // Javascript code to execute after DOM content
+      let chartData = [
+        /*{
+        id: 'flare',
+        text: 'Secure',
+        parent: ''
+      }, */
+        {
+        id: 'secure',
+        text: 'Govern',
+        parent: '',
+      }, {
+          id: 'identify',
+          text: 'Identify',
+          parent: 'secure',
+          value:25
+        },
+        {
+          id: 'protect',
+          text: 'Protect',
+          parent: 'secure',
+          value:25
+        },
+        {
+          id: 'detect',
+          text: 'Detect',
+          parent: 'secure',
+          value:25
+        },
+        {
+          id: 'respondrecover',
+          text: 'Respond & Recover',
+          parent: 'secure',
+          value: 25
+        },
+        {
+          id: 'plan',
+          text: 'Plan',
+          parent: 'identify',
+          value: 100
+        },
+        {
+          id: 'build',
+          text: 'Build',
+          parent: 'protect',
+          value: 25
+        },
+        {
+          id: 'verify',
+          text: 'Verify',
+          parent: 'protect',
+          value: 25
+        },
+        {
+          id: 'release-deploy',
+          text: 'Release & Deployment',
+          parent: 'protect',
+          value:50
+        },
+        {
+          id: 'monitor',
+          text: 'Monitor',
+          parent: 'detect',
+          value:100
+        },
+        {
+          id: 'operate',
+          text: 'Operate',
+          parent: 'respondrecover',
+          value:100
+        },
+        {
+          id: 'incident',
+          text: 'Response plan design',
+          parent: 'operate',
+          value:50
+        },
+        {
+          id: 'incidentresponse',
+          text: 'Response plan excecution',
+          parent: 'operate',
+          value:50
+        },
+        {
+          id: 'realtime',
+          text: 'Realtime monitoring',
+          parent: 'monitor',
+          value:50
+        },
+        {
+          id: 'logs',
+          text: 'Logs analysis',
+          parent: 'monitor',
+          value:50
+        },
+        {
+          id: 'devices',
+          text: 'IoT Devices',
+          parent: 'plan',
+          value:33.33
+        },
+        {
+          id: 'edgecomputing',
+          text: 'Critical Edge-Computing points',
+          parent: 'plan',
+          value:33.33
+        },
+        {
+          id: 'humanmachine',
+          text: 'Human Machine Interactions',
+          parent: 'plan',
+          value:33.33
+        },
+        {
+          id: 'romede',
+          text: 'Control de versiones',
+          parent: 'release-deploy',
+          value:50
+        },
+        {
+          id: 'explotation',
+          text: 'Penetration Testing',
+          parent: 'verify',
+          value:12.5
+        },
+        {
+          id: 'performance',
+          text: 'Performance Testing',
+          parent: 'verify',
+          value:12.5
+        },
+        {
+          id: 'infrastructure',
+          text: 'Infrastructure',
+          parent: 'build',
+          value:12.5
+        },
+        {
+          id: 'code',
+          text: 'Secure coding',
+          parent: 'build',
+          value:12.5
+        }
+      ];
+      // full ZingChart schema can be found here:
+      // https://www.zingchart.com/docs/api/json-configuration/
+      let chartConfig = {
+        type: 'sunburst',
+        title: {
+          text: "Cybersecurity Conceptual Framework Applied to Edge Computing and Internet of Things Environments"
+        },
+        options: {
+          /*flat: true,*/
+          root: 'secure',
+          widths: [60, 100, 100, 100],
+          palette: ['#7CA82B', '#29A2CC', '#D31E1E', '#EF8535', '#A05F18', '#265E96', '#6B7075', '#28536B', '#A87356', '#70AE6E', '#764493', '#BA163B', '#E8630A'],
+          slice: 0,
+          space: 1
+        },
+        plot: {
+          valueBox: {
+            text: '%data-vbtext',
+            color: '#424242',
+            fontSize: '14px',
+            visible: null
+          }
+        },
+        scaleR: {
+          refAngle: 270 //relative to the starting 90 degree position.
+        },
+        series: chartData
+      };
+
+      // render chart
+      zingchart.render({
+        id: 'myChart',
+        data: chartConfig,
+        height: '100%',
+        width: '100%',
+      });
+    });
+  </script>
+  <div class="p-6">
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Govern</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        Como parte central del Framework de Ciberseguridad propuesto, El rol de "Govern" se enfoca en la gobernanza y
+        gestión de riesgos, estableciendo políticas y procedimientos que alinean la ciberseguridad con los objetivos
+        estratégicos de la organización. Este componente implica la identificación y evaluación de riesgos, el
+        cumplimiento normativo, la consideración de legislaciones y regulaciones aplicables, así la promoción de una
+        cultura de ciberseguridad, asegurando que se tomen decisiones informadas y se protejan adecuadamente los activos
+        críticos de la organización.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="p-6 space-x-2 space-y-2 grid grid-cols-2">
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Identify</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        La etapa de "Identify" se centra en la comprensión y el análisis del entorno
+        organizacional para gestionar los riesgos de ciberseguridad de manera efectiva. Esta fase implica la
+        identificación de los activos críticos, la evaluación de los riesgos asociados, la comprensión de las amenazas y
+        vulnerabilidades, y la definición de los roles y responsabilidades en materia de ciberseguridad. Al establecer una
+        base sólida de conocimiento, "Identify" permite a las organizaciones desarrollar estrategias adecuadas para
+        proteger sus recursos y garantizar la continuidad del negocio.
+      </p>
+    </div>
+
+      <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Plan</h5>
+        <p class="font-normal text-gray-700 dark:text-gray-400">
+          Alineado con la fase de "Identify del Framework NIST 2.0 "La fase de "Plan" se centra en la integración de la
+          seguridad desde el inicio del ciclo de vida del desarrollo de software. Durante esta etapa, los equipos de
+          desarrollo, operaciones y seguridad
+          colaboran para definir los objetivos del proyecto, identificar requisitos de seguridad y establecer políticas y
+          prácticas que aseguren la protección de los activos desde el principio. Esta colaboración temprana permite
+          anticipar y abordar posibles vulnerabilidades, garantizando que la seguridad esté alineada con los objetivos del
+          negocio y se integre de manera fluida en el proceso de desarrollo, lo que resulta en un producto final más seguro
+          y resiliente.
+        </p>
+      </div>
+
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Detect</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        La etapa de "Detect" se centra en la capacidad de identificar y
+        detectar eventos de ciberseguridad en tiempo real. Esta fase implica la implementación de herramientas y
+        procesos de monitoreo continuo, así como la creación de indicadores de compromiso que permitan reconocer
+        actividades anómalas o sospechosas. Al establecer mecanismos de detección efectivos, "Detect" permite a las
+        organizaciones responder de manera oportuna a incidentes de seguridad, minimizando así el impacto potencial y
+        facilitando una gestión proactiva de los riesgos.
+      </p>
+    </div>
+
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Monitor</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        La fase de "Monitor" enfoca en la supervisión continua de las aplicaciones y la
+        infraestructura para detectar vulnerabilidades y amenazas en tiempo real. Durante esta etapa, se implementan
+        herramientas de monitoreo y análisis que permiten evaluar el rendimiento, la seguridad y el cumplimiento de las
+        políticas establecidas. Esta vigilancia proactiva facilita la identificación temprana de problemas, permitiendo
+        a los equipos responder rápidamente a incidentes de seguridad y mejorar continuamente la postura de seguridad
+        del software a lo largo de su ciclo de vida.
+      </p>
+    </div>
+
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Protect</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        La etapa de "Protect" en el framework de ciberseguridad NIST 2.0 se enfoca en la implementación de medidas y c
+        ontroles de seguridad para salvaguardar los activos críticos de una organización. Esta fase incluye el desarrollo
+        de políticas y procedimientos de seguridad, la capacitación del personal, la implementación de tecnologías de
+        protección y la gestión de accesos. Al establecer estas defensas, "Protect" busca limitar el impacto de posibles
+        incidentes de ciberseguridad, asegurando la confidencialidad, integridad y disponibilidad de la información y los
+        sistemas.
+      </p>
+    </div>
+
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Build, Deploy, Release, Verify</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        En la metodología de DevSecOps, las fases de "Deploy," "Release," "Build," y "Verify" son fundamentales para
+        asegurar un flujo de trabajo ágil y seguro. La fase de "Build" implica la creación del código y la integración de
+        componentes, asegurando que se sigan las prácticas de seguridad desde el inicio. "Deploy" se refiere a la
+        implementación del software en entornos de producción, mientras que "Release" abarca la entrega de nuevas
+        funcionalidades a los usuarios finales. Finalmente, "Verify" consiste en realizar pruebas y validaciones para
+        garantizar que el software cumple con los estándares de calidad y seguridad antes de su lanzamiento, permitiendo
+        una entrega continua y confiable.
+      </p>
+    </div>
+
+
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Recover & Response</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        La fase de "Respond" implica la planificación y ejecución de acciones para contener y mitigar el impacto de un
+        incidente, así como la comunicación efectiva con las partes interesadas. Por otro lado, "Recover" se enfoca en la
+        restauración de los sistemas y servicios afectados, asegurando que la organización pueda volver a operar de manera
+        normal y aprender de la experiencia para mejorar sus estrategias de ciberseguridad en el futuro. Juntas, estas
+        etapas son fundamentales para garantizar la resiliencia organizacional ante amenazas cibernéticas.
+      </p>
+    </div>
+
+    <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Operate</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        La fase de "Operate" en la metodología de DevSecOps se centra en la gestión y el mantenimiento de las aplicaciones
+        y la infraestructura en un entorno de producción. Durante esta etapa, los equipos aseguran que los sistemas
+        funcionen de manera eficiente y segura, aplicando actualizaciones, parches y configuraciones necesarias para
+        mitigar riesgos. La colaboración continua entre desarrollo, operaciones y seguridad permite una respuesta ágil a
+        incidentes y la optimización del rendimiento, garantizando que las aplicaciones no solo cumplan con los requisitos
+        funcionales, sino que también mantengan altos estándares de seguridad y disponibilidad.
+      </p>
+    </div>
+
+  </div>
+
+<div class="p-10 space-y-2 space-x-2  grid grid-cols-4">
+
+  <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Identify-Plan</h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400">
+      Evaluación y Análisis de Activos
+      Definición de Requisitos y Políticas
+      Roles, Responsabilidades y Capacidades de Monitoreo
+      Definición de Pruebas y Métricas de Seguridad
+    </p>
+  </div>
+
+  <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Operate-Respond&Recover</h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400">
+      Planificación y Preparación para Incidentes
+      Respuesta y Análisis de Incidentes
+      Recuperación y Mejora Continua
+    </p>
+  </div>
+
+  <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Detect-Monitor</h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400">
+      Implementación de Monitoreo y Detección
+      Análisis de Logs
+    </p>
+  </div>
+
+  <div class="block p-6 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Operate-Respond&Recover</h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400">
+      Integración de procesos de Seguridad en el Desarrollo
+      Pruebas y Validación de Seguridad
+      Control de versiones, validación de funcionalidades y rendimiento
+    </p>
+  </div>
+
+</div>
+
+
+
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</body>
+
+</html>
